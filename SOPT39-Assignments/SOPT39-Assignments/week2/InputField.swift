@@ -49,7 +49,6 @@ struct InputField: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(state.borderColor, lineWidth: 1)
         }
-        .padding(.horizontal, 31)
     }
 
     @ViewBuilder
@@ -92,16 +91,5 @@ struct InputField: View {
         Text(placeholder)
             .font(.body2)
             .foregroundStyle(.gray250)
-    }
-}
-
-enum InputFieldState {
-    case normal, valid, invalid
-
-    var borderColor: Color {
-        switch self {
-        case .normal: return .white
-        case .valid, .invalid: return .black
-        }
     }
 }
