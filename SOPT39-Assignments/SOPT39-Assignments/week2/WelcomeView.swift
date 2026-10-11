@@ -44,7 +44,6 @@ struct WelcomeView: View {
             .buttonStyle(.plain)
             .padding(.bottom, 34)
             .padding(.horizontal, 22)
-
         }
         .padding(.top, 112)
         .background(.darkgreen)

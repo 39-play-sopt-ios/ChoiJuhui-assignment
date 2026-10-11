@@ -45,7 +45,7 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                NextButton(title: "다음", isEnabled: email.isValidEmail) {
+                NextButton(title: "다음", isEnabled: isEmailValid) {
                     goNext = true
                 }
                 .padding(.horizontal, 22)
