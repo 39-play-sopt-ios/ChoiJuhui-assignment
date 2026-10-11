@@ -1,0 +1,51 @@
+# ===== Xcode 개인 설정 =====
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# ===== 빌드 결과물 =====
+build/
+DerivedData/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# ===== Swift Package Manager =====
+.build/
+.swiftpm/
+# Package.resolved는 팀원과 버전을 맞추려면 커밋하는 게 좋아서 제외하지 않음
+
+# ===== CocoaPods =====
+# Pods/
+
+# ===== Carthage =====
+Carthage/Build/
+
+# ===== fastlane =====
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# ===== 플레이그라운드 =====
+timeline.xctimeline
+playground.xcworkspace
+
+# ===== 비밀 정보 =====
+*.xcconfig.secret
+Secrets.swift
+.env
+
+# ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ===== 에디터 =====
+.vscode/
+.idea/
+*.swp
