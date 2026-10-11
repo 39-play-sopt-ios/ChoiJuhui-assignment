@@ -17,7 +17,7 @@ struct NicknameSheet: View {
             Text("닉네임을 입력해주세요")
                 .font(.subhead1)
                 .foregroundStyle(.white)
-                .padding(.top, 16)
+                .padding(.top, 42)
                 .padding(.leading, 22)
 
             TextField("", text: $input, prompt: Text("닉네임 입력")
