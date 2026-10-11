@@ -11,6 +11,7 @@ struct PasswordView: View {
     let email: String
     @State private var password = ""
     @State private var nickname = "닉네임 설정"
+    @State private var showBottomSheet = false
     @State private var goNext = false
     
     private var isPasswordValid: Bool {
@@ -50,11 +51,15 @@ struct PasswordView: View {
             .padding(.top, 13)
             .padding(.leading, 35)
             
-            Text("\(nickname)")
-                .font(.body2)
-                .foregroundStyle(.gray300)
-                .underline()
-                .padding(.top, 40)
+            Button {
+                showBottomSheet = true
+            } label: {
+                Text(nickname.isEmpty ? "닉네임 설정" : nickname)
+                    .font(.body2)
+                    .foregroundStyle(.gray300)
+                    .underline()
+            }
+            .padding(.top, 40)
             
             Spacer()
             
@@ -63,6 +68,10 @@ struct PasswordView: View {
             }
             .padding(.horizontal, 22)
             .padding(.bottom, 13)
+        }
+        .sheet(isPresented: $showBottomSheet) {
+            NicknameSheet(nickname: $nickname, isPresented: $showBottomSheet)
+                .presentationDetents([.fraction(0.5)])
         }
         // TODO: - 이후 메인화면 연결
     }
