@@ -31,6 +31,7 @@ struct InputField: View {
                     TextField(title, text: $text, prompt: prompt)
                 }
             }
+            .keyboardType(.asciiCapable)
             .focused($isTyping)
             .font(.body2)
             .textInputAutocapitalization(.never)

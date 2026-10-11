@@ -10,7 +10,7 @@ import SwiftUI
 struct PasswordView: View {
     let email: String
     @State private var password = ""
-    @State private var nickname = "닉네임 설정"
+    @State private var nickname = ""
     @State private var showBottomSheet = false
     @State private var goNext = false
     
@@ -32,13 +32,14 @@ struct PasswordView: View {
                 
                 InputField(title: "password",
                            placeholder: "비밀번호 입력",
-                           text: $password)
+                           text: $password,
+                           isSecure: true)
                 .padding(.top, 44)
             }
             .padding(.horizontal, 31)
             .padding(.top, 152)
             
-            HStack(spacing: 5) {
+            HStack(alignment: .center, spacing: 5) {
                 Image(isPasswordValid ? .subtractFill : .subtract)
                     .resizable()
                     .scaledToFit()
@@ -48,6 +49,7 @@ struct PasswordView: View {
                     .font(.body2)
                     .foregroundStyle(isPasswordValid ? .starbucksGreen : .gray300)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 13)
             .padding(.leading, 35)
             
@@ -72,7 +74,13 @@ struct PasswordView: View {
         .sheet(isPresented: $showBottomSheet) {
             NicknameSheet(nickname: $nickname, isPresented: $showBottomSheet)
                 .presentationDetents([.fraction(0.5)])
+                .presentationDragIndicator(.visible)
+                .presentationBackground(.darkgreen)
         }
-        // TODO: - 이후 메인화면 연결
+        .background(.backgroundWhite)
+        .navigationDestination(isPresented: $goNext) {
+            WelcomeView(nickname: nickname)
+                .navigationBarBackButtonHidden(true)
+        }
     }
 }

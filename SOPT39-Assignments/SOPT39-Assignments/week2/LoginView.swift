@@ -11,6 +11,10 @@ struct LoginView: View {
     @State private var email = ""
     @State private var goNext = false
     
+    private var isEmailValid: Bool {
+        email.isValidEmail
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -31,7 +35,9 @@ struct LoginView: View {
                     
                     InputField(title: "email",
                                placeholder: "email@address.com",
-                               text: $email)
+                               text: $email,
+                               isValid: isEmailValid
+                    )
                     .padding(.top, 27)
                 }
                 .padding(.horizontal, 31)
@@ -42,12 +48,14 @@ struct LoginView: View {
                 NextButton(title: "다음", isEnabled: email.isValidEmail) {
                     goNext = true
                 }
-                    .padding(.horizontal, 22)
-                    .padding(.bottom, 13)
+                .padding(.horizontal, 22)
+                .padding(.bottom, 13)
             }
             .navigationDestination(isPresented: $goNext) {
                 PasswordView(email: email)
+                    .navigationBarBackButtonHidden(true)
             }
         }
+        .background(.backgroundWhite)
     }
 }
