@@ -59,7 +59,8 @@ struct PasswordView: View {
                 Text(nickname.isEmpty ? "닉네임 설정" : nickname)
                     .font(.body2)
                     .foregroundStyle(.gray300)
-                    .underline()
+                    .underline(nickname.isEmpty)
+                    
             }
             .padding(.top, 40)
             
