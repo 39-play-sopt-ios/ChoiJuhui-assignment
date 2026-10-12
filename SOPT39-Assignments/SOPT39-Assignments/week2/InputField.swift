@@ -19,6 +19,7 @@ struct InputField: View {
 
     private var state: InputFieldState {
         if let isValid, !text.isEmpty, !isValid { return .invalid }
+        if isSecure && (isTyping || !text.isEmpty) { return .focused}
         return text.isEmpty ? .normal : .valid
     }
 
