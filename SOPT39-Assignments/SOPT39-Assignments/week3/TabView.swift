@@ -72,7 +72,7 @@ struct CustomTabBar: View {
                             .frame(width: 24, height: 24)
 
                         Text(tab.title)
-                            .font(.cap2)
+                            .font(.body1)
                     }
                     .foregroundStyle(selected == tab ? .starbucksGreen : .gray300)
                     .frame(maxWidth: .infinity)
