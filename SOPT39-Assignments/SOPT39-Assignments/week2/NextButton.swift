@@ -14,7 +14,7 @@ struct NextButton: View {
     
     let title: String
     var style: Style = .filled
-    let isEnabled: Bool
+    let isEnabled: Bool = true
     let action: () -> Void
     
     var body: some View {
