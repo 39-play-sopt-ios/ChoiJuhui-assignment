@@ -11,12 +11,12 @@ struct NextButton: View {
     enum Style {
         case filled, inverted
     }
-    
+
     let title: String
     var style: Style = .filled
-    let isEnabled: Bool = true
+    var isEnabled: Bool = true
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             Text(title)
@@ -31,7 +31,7 @@ struct NextButton: View {
         .buttonStyle(.plain)
         .disabled(!isEnabled)
     }
-    
+
     private var foreground: Color {
         switch (style, isEnabled) {
         case (.filled, true): return .white
