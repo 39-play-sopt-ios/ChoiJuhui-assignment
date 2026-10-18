@@ -18,7 +18,6 @@ struct AllOrderView: View {
                 .frame(height: 1)
                 .overlay(.gray100)
             
-            
             List(viewModel.mainOrderMenu) { menu in
                 MainOrderCardView(menuImage: Image(menu.menuImageName), title: menu.title)
                     .background {
