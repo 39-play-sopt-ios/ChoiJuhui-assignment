@@ -20,36 +20,20 @@ struct NicknameSheet: View {
                 .padding(.top, 42)
                 .padding(.leading, 22)
 
-            TextField("", text: $input, prompt: Text("닉네임 입력")
-                .font(.body2)
-                .foregroundStyle(.black)
-            )
-            .font(.body2)
-            .autocorrectionDisabled()
-            .padding(.horizontal, 15)
-            .frame(height: 47)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            InputField(title: "nickname",
+                       placeholder: "닉네임 입력",
+                       text: $input,
+                       showClearButton: false)
             .padding(.top, 19)
             .padding(.horizontal, 30)
 
+
             Spacer()
 
-            Button {
+            NextButton(title: "완료", style: .inverted, isEnabled: !input.isEmpty) {
                 nickname = input
                 isPresented = false
-            } label: {
-                Text("확인")
-                    .font(.medium)
-                    .foregroundStyle(.starbucksGreen)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .contentShape(RoundedRectangle(cornerRadius: 10))
             }
-            .buttonStyle(.plain)
-            .disabled(input.isEmpty)
             .padding(.bottom, 47)
             .padding(.horizontal, 22)
         }
