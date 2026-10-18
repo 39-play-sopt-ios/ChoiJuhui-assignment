@@ -31,19 +31,9 @@ struct WelcomeView: View {
             
             Spacer()
             
-            Button {} label: {
-                Text("메인으로")
-                    .font(.medium)
-                    .foregroundStyle(.starbucksGreen)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 56)
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .contentShape(RoundedRectangle(cornerRadius: 10))
-            }
-            .buttonStyle(.plain)
-            .padding(.bottom, 34)
-            .padding(.horizontal, 22)
+            NextButton(title: "메인으로", style: .inverted) {}
+                .padding(.bottom, 34)
+                .padding(.horizontal, 22)
         }
         .padding(.top, 112)
         .background(.darkgreen)

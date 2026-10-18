@@ -18,6 +18,10 @@ struct PasswordView: View {
         password.isValidPassword
     }
     
+    private var canSignUp: Bool {
+        isPasswordValid && !nickname.isEmpty
+    }
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 0) {
@@ -66,7 +70,7 @@ struct PasswordView: View {
             
             Spacer()
             
-            NextButton(title: "가입하기", isEnabled: isPasswordValid) {
+            NextButton(title: "가입하기", isEnabled: canSignUp) {
                 goNext = true
             }
             .padding(.horizontal, 22)
