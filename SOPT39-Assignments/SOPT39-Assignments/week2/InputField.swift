@@ -13,31 +13,25 @@ struct InputField: View {
     @Binding var text: String
     var isSecure: Bool = false
     var isValid: Bool? = nil
+    var showClearButton: Bool = true
 
     @State private var isRevealed: Bool = false
     @FocusState private var isTyping: Bool
 
     private var state: InputFieldState {
-        if let isValid, !text.isEmpty, !isValid { return .invalid }
-        if isSecure && (isTyping || !text.isEmpty) { return .focused}
-        return text.isEmpty ? .normal : .valid
+        if isTyping { return .focused }
+        return text.isEmpty ? .normal : .filled
     }
 
     var body: some View {
         HStack(spacing: 12) {
-            Group {
-                if isSecure && !isRevealed {
-                    SecureField(title, text: $text, prompt: prompt)
-                } else {
-                    TextField(title, text: $text, prompt: prompt)
-                }
-            }
-            .focused($isTyping)
-            .font(.body2)
-            .textInputAutocapitalization(.never)
-            .autocorrectionDisabled()
-            .textContentType(isSecure ? .password : nil)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            inputField
+                .focused($isTyping)
+                .font(.body2)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .textContentType(isSecure ? .newPassword : nil)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             trailingIcons
                 .padding(.trailing, 15)
@@ -49,6 +43,20 @@ struct InputField: View {
         .overlay {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(state.borderColor, lineWidth: 1)
+        }
+    }
+    
+    @ViewBuilder
+    private var inputField: some View {
+        if isSecure {
+            ZStack {
+                TextField(title, text: $text, prompt: prompt)
+                    .opacity(isRevealed ? 1 : 0)
+                SecureField(title, text: $text, prompt: prompt)
+                    .opacity(isRevealed ? 0 : 1)
+            }
+        } else {
+            TextField(title, text: $text, prompt: prompt)
         }
     }
 

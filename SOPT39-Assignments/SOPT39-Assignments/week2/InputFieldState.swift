@@ -8,12 +8,12 @@
 import SwiftUI
 
 enum InputFieldState {
-    case normal, focused, valid, invalid
+    case normal, focused, filled
 
     var borderColor: Color {
         switch self {
         case .normal: return .white
-        case .valid, .invalid: return .black
+        case .filled: return .black
         case .focused: return .gray200
         }
     }
