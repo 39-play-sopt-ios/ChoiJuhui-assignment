@@ -16,13 +16,15 @@ struct MainOrderView: View {
             searchBar
             mainText
             TabSelector(selected: $tab)
-
-            switch tab {
-            case .all:
+            
+            TabView(selection: $tab) {
                 AllOrderView(viewModel: viewModel)
-            case .mymenu:
+                    .tag(MenuType.all)
                 MyOrderView(viewModel: viewModel)
+                    .tag(MenuType.mymenu)
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            
             spotBar
         }
         .toolbar(.hidden, for: .navigationBar)

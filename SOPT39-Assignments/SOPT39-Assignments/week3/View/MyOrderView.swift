@@ -15,16 +15,33 @@ struct MyOrderView: View {
             emptyView
         } else {
             List(viewModel.myMenu) { item in
-                MenuDetailCardView(menuImage: Image(item.menuImageName),
-                                   title: item.title,
-                                   description: item.description,
-                                   price: item.price)
-                    .background {
-                        NavigationLink(value: item) { EmptyView() }
-                            .opacity(0)
+                HStack(spacing: 0) {
+                    MenuDetailCardView(menuImage: Image(item.menuImageName),
+                                       title: item.title,
+                                       description: item.description,
+                                       price: item.price)
+
+                    Spacer()
+
+                    Button {
+                        viewModel.toggleLike(item)
+                    } label: {
+                        Image(.likeFill)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                            .frame(width: 44, height: 44)
+                            .contentShape(Rectangle())
                     }
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets())
+                    .buttonStyle(.plain)
+                    .padding(.trailing, 21)
+                }
+                .background {
+                    NavigationLink(value: item) { EmptyView() }
+                        .opacity(0)
+                }
+                .listRowSeparator(.hidden)
+                .listRowInsets(EdgeInsets())
             }
             .listStyle(.plain)
         }
