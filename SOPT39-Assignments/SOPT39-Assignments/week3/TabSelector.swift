@@ -14,16 +14,15 @@ enum MenuType: String, CaseIterable {
 
 struct TabSelector: View {
     @Binding var selected: MenuType
-    
+    @Namespace private var underline
+
     var body: some View {
         HStack(spacing: 0) {
             ForEach(MenuType.allCases, id: \.self) { tab in
-                Button {
-                    selected = tab
-                } label: {
+                Button { selected = tab } label: {
                     Text(tab.rawValue)
                         .font(.medium)
-                        .frame(width: 130)
+                        .frame(maxWidth: 130)
                         .foregroundStyle(selected == tab ? .starbucksGreen : .gray300)
                         .padding(.bottom, 14)
                         .overlay(alignment: .bottom) {
@@ -31,12 +30,13 @@ struct TabSelector: View {
                                 Rectangle()
                                     .fill(.starbucksGreen)
                                     .frame(height: 4)
+                                    .matchedGeometryEffect(id: "underline", in: underline)
                             }
                         }
                 }
                 .buttonStyle(.plain)
-                .frame(alignment: .leading)
             }
         }
+        .animation(.easeInOut(duration: 0.3), value: selected)
     }
 }
