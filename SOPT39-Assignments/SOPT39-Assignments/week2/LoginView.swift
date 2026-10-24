@@ -51,11 +51,11 @@ struct LoginView: View {
                 .padding(.horizontal, 22)
                 .padding(.bottom, 13)
             }
+            .background(.backgroundWhite)
             .navigationDestination(isPresented: $goNext) {
                 PasswordView(email: email)
                     .navigationBarBackButtonHidden(true)
             }
         }
-        .background(.backgroundWhite)
     }
 }
