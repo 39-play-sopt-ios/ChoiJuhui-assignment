@@ -64,15 +64,17 @@ struct InputField: View {
     private var trailingIcons: some View {
         if !text.isEmpty {
             HStack(spacing: 6.25) {
-                Button {
-                    text = ""
-                } label: {
-                    Image(.close)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
+                if showClearButton {
+                    Button {
+                        text = ""
+                    } label: {
+                        Image(.close)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
 
                 if isSecure {
                     Button {
