@@ -10,6 +10,9 @@ import SwiftUI
 struct AllOrderView: View {
     let viewModel: MainOrderViewModel
     
+    private let categories = ["음료", "푸드", "상품"]
+    private let selectedCategory = "음료"
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             categoryBar
@@ -35,17 +38,11 @@ struct AllOrderView: View {
     
     private var categoryBar: some View {
         HStack(spacing: 28) {
-            Text("음료")
-                .font(.medium)
-                .foregroundStyle(.black)
-            
-            Text("푸드")
-                .font(.medium)
-                .foregroundStyle(.gray350)
-            
-            Text("상품")
-                .font(.medium)
-                .foregroundStyle(.gray350)
+            ForEach(categories, id: \.self) { category in
+                Text(category)
+                    .font(.medium)
+                    .foregroundStyle(category == selectedCategory ? .black : .gray350)
+            }
         }
         .padding(.leading, 42)
         .padding(.vertical, 18)
