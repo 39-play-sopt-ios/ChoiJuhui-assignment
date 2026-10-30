@@ -41,7 +41,7 @@ struct MenuItemDetailView: View {
                         .foregroundStyle(.gray450)
                         .padding(.top, 7)
                     
-                    Text(item.detailDescription)
+                    Text("가을에 잘 어울리는 군고구마를 한 잔에 담은 음료.\n포슬한 카스텔라, 쫀득한 펄이 어우러져 다채로운 식감을 즐길 수 있는 음료.")
                         .font(.cap1)
                         .foregroundStyle(.gray550)
                         .padding(.vertical, 14)

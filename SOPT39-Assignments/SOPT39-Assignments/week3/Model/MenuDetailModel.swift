@@ -13,7 +13,6 @@ struct MenuDetailModel: Identifiable, Hashable {
     let title: String
     let description: String
     let price: String
-    let detailDescription: String
     var isNew = false
     var isIcedOnly = false
     var notice: String? = nil
