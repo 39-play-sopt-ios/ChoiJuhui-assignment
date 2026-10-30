@@ -18,10 +18,10 @@ struct AllOrderView: View {
                 .frame(height: 1)
                 .overlay(.gray100)
             
-            List(viewModel.mainOrderMenu) { menu in
-                MainOrderCardView(menuImage: Image(menu.menuImageName), title: menu.title)
+            List(viewModel.categories) { category in
+                MainOrderCardView(menuImage: Image(category.image), title: category.title)
                     .background {
-                        NavigationLink(value: menu) { EmptyView() }
+                        NavigationLink(value: category) { EmptyView() }
                             .opacity(0)
                     }
                     .listRowSeparator(.hidden)

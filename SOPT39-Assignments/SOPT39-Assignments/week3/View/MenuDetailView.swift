@@ -11,8 +11,8 @@ struct MenuDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var viewModel: MenuDetailViewModel
 
-    init(menu: MainOrderModel) {
-        _viewModel = State(initialValue: MenuDetailViewModel(category: menu))
+    init(category: MenuCategory) {
+        _viewModel = State(initialValue: MenuDetailViewModel(category: category))
     }
 
     var body: some View {

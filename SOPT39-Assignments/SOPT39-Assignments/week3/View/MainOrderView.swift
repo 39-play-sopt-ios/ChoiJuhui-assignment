@@ -28,8 +28,8 @@ struct MainOrderView: View {
             spotBar
         }
         .toolbar(.hidden, for: .navigationBar)
-        .navigationDestination(for: MainOrderModel.self) { menu in
-            MenuDetailView(menu: menu)
+        .navigationDestination(for: MenuCategory.self) { category in
+            MenuDetailView(category: category)
         }
         .navigationDestination(for: MenuDetailModel.self) { item in
             MenuItemDetailView(item: item, viewModel: viewModel)

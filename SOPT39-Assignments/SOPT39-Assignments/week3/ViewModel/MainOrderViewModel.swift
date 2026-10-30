@@ -10,13 +10,7 @@ import Observation
 
 @Observable
 final class MainOrderViewModel {
-    private(set) var mainOrderMenu: [MainOrderModel] = [
-        MainOrderModel(menuImageName: "menu1", title: "NEW"),
-        MainOrderModel(menuImageName: "menu2", title: "추천"),
-        MainOrderModel(menuImageName: "menu3", title: "콜드 브루"),
-        MainOrderModel(menuImageName: "menu4", title: "블론드"),
-        MainOrderModel(menuImageName: "menu5", title: "에스프레소")
-    ]
+    let categories = MenuCategory.allCases
     private(set) var myMenu: [MenuDetailModel] = []
 
     func isLiked(_ item: MenuDetailModel) -> Bool {
