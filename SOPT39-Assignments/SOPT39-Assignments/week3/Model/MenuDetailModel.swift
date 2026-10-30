@@ -8,7 +8,7 @@
 import Foundation
 
 struct MenuDetailModel: Identifiable, Hashable {
-    let id = UUID()
+    var id: String { title }
     let menuImageName: String
     let title: String
     let description: String
