@@ -21,7 +21,7 @@ struct MainOrderView: View {
                 AllOrderView(viewModel: viewModel)
                     .tag(MenuType.all)
                 MyOrderView(viewModel: viewModel)
-                    .tag(MenuType.mymenu)
+                    .tag(MenuType.myMenu)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             
@@ -37,7 +37,7 @@ struct MainOrderView: View {
     }
     
     private var searchBar: some View {
-        HStack() {
+        HStack {
             Spacer()
             
             Image(.search)
