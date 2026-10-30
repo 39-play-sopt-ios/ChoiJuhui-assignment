@@ -9,7 +9,7 @@ import SwiftUI
 
 enum MenuType: String, CaseIterable {
     case all = "전체 메뉴"
-    case mymenu = "나만의 메뉴"
+    case myMenu = "나만의 메뉴"
 }
 
 struct TabSelector: View {
