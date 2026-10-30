@@ -6,12 +6,10 @@
 //
 
 import Foundation
-import Observation
 
-@Observable
-final class MenuDetailViewModel {
+struct MenuDetailViewModel {
     let category: MenuCategory
-    private(set) var menus: [MenuDetailModel]
+    let menus: [MenuDetailModel]
 
     init(category: MenuCategory) {
         self.category = category
