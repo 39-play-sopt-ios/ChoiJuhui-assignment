@@ -28,9 +28,11 @@ struct MenuItemDetailView: View {
                             .font(.head2)
                             .foregroundStyle(.black)
                         
-                        Text("NEW")
-                            .font(.subhead2)
-                            .foregroundStyle(.newgreen)
+                        if item.isNew {
+                            Text("NEW")
+                                .font(.subhead2)
+                                .foregroundStyle(.newgreen)
+                        }
                     }
                     .padding(.top, 21)
                     
@@ -39,7 +41,7 @@ struct MenuItemDetailView: View {
                         .foregroundStyle(.gray450)
                         .padding(.top, 7)
                     
-                    Text("가을에 잘 어울리는 군고구마를 한 잔에 담은 음료.\n포슬한 카스텔라, 쫀득한 펄이 어우러져 다채로운 식감을 즐길 수 있는 음료.")
+                    Text(item.detailDescription)
                         .font(.cap1)
                         .foregroundStyle(.gray550)
                         .padding(.vertical, 14)
@@ -51,27 +53,31 @@ struct MenuItemDetailView: View {
                 }
                 .padding(.horizontal, 21)
                 
-                Text("ICED ONLY")
-                    .font(.subhead2)
-                    .foregroundStyle(.starbucksBlue)
-                    .padding(.vertical, 12)
-                    .frame(maxWidth: .infinity)
-                    .overlay(
-                        Capsule()
-                            .stroke(.gray50, lineWidth: 1)
-                    )
-                    .padding(.top, 21)
-                    .padding(.bottom, 25)
-                    .padding(.horizontal, 25)
+                if item.isIcedOnly {
+                    Text("ICED ONLY")
+                        .font(.subhead2)
+                        .foregroundStyle(.starbucksBlue)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .overlay(
+                            Capsule()
+                                .stroke(.gray50, lineWidth: 1)
+                        )
+                        .padding(.top, 21)
+                        .padding(.bottom, 25)
+                        .padding(.horizontal, 25)
+                }
                 
-                Text("*컬러 드리즐은 시간이 지날수록 번지는 현상이 있으나 음료 품질과는 무관하니 안심하고 드세요.")
-                    .font(.cap1)
-                    .foregroundStyle(.gray350)
-                    .padding(.vertical, 21)
-                    .padding(.horizontal, 14)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(.backgroundWhite)
-                    .padding(.horizontal, 21)
+                if let notice = item.notice {
+                    Text(notice)
+                        .font(.cap1)
+                        .foregroundStyle(.gray350)
+                        .padding(.vertical, 21)
+                        .padding(.horizontal, 14)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(.backgroundWhite)
+                        .padding(.horizontal, 21)
+                }
             }
         }
         .ignoresSafeArea(edges: .top)
