@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MenuDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    private let viewModel: MenuDetailViewModel
+    @State private var viewModel: MenuDetailViewModel
 
     init(category: MenuCategory) {
-        viewModel = MenuDetailViewModel(category: category)
+        _viewModel = State(initialValue: MenuDetailViewModel(category: category))
     }
 
     var body: some View {
