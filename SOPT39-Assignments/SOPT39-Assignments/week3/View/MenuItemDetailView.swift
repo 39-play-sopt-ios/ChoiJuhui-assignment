@@ -120,20 +120,12 @@ struct MenuItemDetailView: View {
             Button {
                 viewModel.toggleLike(item)
             } label: {
-                ZStack {
-                    Image(.likeFill)
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(viewModel.isLiked(item) ? .starbucksGreen : .clear)
-
-                    Image(.like)
-                        .renderingMode(.template)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(viewModel.isLiked(item) ? .starbucksGreen : .black)
-                }
-                .frame(width: 26, height: 26)
+                Image(viewModel.isLiked(item) ? .likeFill : .like)
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(viewModel.isLiked(item) ? .starbucksGreen : .black)
+                    .frame(width: 26, height: 26)
             }
             .buttonStyle(.plain)
             
