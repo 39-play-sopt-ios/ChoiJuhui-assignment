@@ -34,6 +34,7 @@ enum MainTab: CaseIterable {
 struct MainTabView: View {
     @State private var selected: MainTab = .home
     @State private var orderPath = NavigationPath()
+    @State private var orderViewModel = MainOrderViewModel()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -41,7 +42,7 @@ struct MainTabView: View {
                 switch selected {
                 case .home: Text("Home")
                 case .pay: Text("Pay")
-                case .order: NavigationStack(path: $orderPath) { MainOrderView() }
+                case .order: NavigationStack(path: $orderPath) { MainOrderView(viewModel: orderViewModel) }
                 case .gift: Text("Gift")
                 case .other: Text("Other")
                 }

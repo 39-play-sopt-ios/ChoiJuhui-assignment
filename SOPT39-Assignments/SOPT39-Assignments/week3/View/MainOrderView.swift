@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainOrderView: View {
+    let viewModel: MainOrderViewModel
     @State private var tab: MenuType = .all
-    @State private var viewModel = MainOrderViewModel()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
