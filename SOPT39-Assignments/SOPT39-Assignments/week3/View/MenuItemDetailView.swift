@@ -76,7 +76,6 @@ struct MenuItemDetailView: View {
         }
         .ignoresSafeArea(edges: .top)
         .toolbar(.hidden, for: .navigationBar)
-        .toolbar(.hidden, for: .tabBar)
         .overlay(alignment: .topLeading) {
             Button {
                 dismiss()
