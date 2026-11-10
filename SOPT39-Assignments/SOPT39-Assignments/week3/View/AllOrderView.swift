@@ -7,11 +7,16 @@
 
 import SwiftUI
 
+enum OrderCategory: String, CaseIterable {
+    case drink = "음료"
+    case food = "푸드"
+    case product = "상품"
+}
+
 struct AllOrderView: View {
     let viewModel: MainOrderViewModel
     
-    private let categories = ["음료", "푸드", "상품"]
-    private let selectedCategory = "음료"
+    private let selectedCategory: OrderCategory = .drink
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -38,8 +43,8 @@ struct AllOrderView: View {
     
     private var categoryBar: some View {
         HStack(spacing: 28) {
-            ForEach(categories, id: \.self) { category in
-                Text(category)
+            ForEach(OrderCategory.allCases, id: \.self) { category in
+                Text(category.rawValue)
                     .font(.medium)
                     .foregroundStyle(category == selectedCategory ? .black : .gray350)
             }
