@@ -11,7 +11,7 @@ import SwiftUI
 struct SOPT39_AssignmentsApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            MainTabView()
         }
     }
 }
